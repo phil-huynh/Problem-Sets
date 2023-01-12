@@ -105,7 +105,6 @@ def smaller(arr):
     return result
 
 
-
 print(smaller([5, 4, 3, 2, 1]))
 print(smaller([1, 2, 3]))
 print(smaller([1, 2, 0]))
@@ -113,86 +112,6 @@ print(smaller([1, 2, 1]))
 print(smaller([1, 1, -1, 0, 0]))
 print(smaller([5, 4, 7, 9, 2, 4, 4, 5, 6]))
 print(smaller([5, 4, 7, 9, 2, 4, 1, 4, 5, 6]))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    # result = []
-    # cache = {}
-    # highest = None
-    # lowest = None
-    # for i in range(len(arr) - 1, -1, -1):
-    #     if arr[i] in cache:
-    #         index = cache[arr[i]]["index"]
-    #         old_total = cache[arr[i]]["total"]
-    #         amount_to_add = how_many(arr[i:index], arr[i])
-    #         total = old_total + amount_to_add
-    #         cache[arr[i]]["index"] = i
-    #         cache[arr[i]]["total"] = total
-    #         result.insert(0, total)
-    #     else:
-    #         cache[arr[i]] = {}
-    #         cache[arr[i]]["occurences"] = 1
-    #         cache[arr[i]]["index"] = i
-    #         total = how_many(arr[i:], arr[i])
-    #         cache[arr[i]]["total"] = total
-    #         result.insert(0, total)
-    # return result
-    # result = []
-    # cache = {}
-    # highest = None
-    # lowest = None
-    # for i in range(len(arr) - 1, -1, -1):
-    #     if arr[i] in cache:
-    #         index = cache[arr[i]]["index"]
-    #         old_total = cache[arr[i]]["total"]
-    #         amount_to_add = how_many(arr[i:index], arr[i])
-    #         total = old_total + amount_to_add
-    #         cache[arr[i]]["index"] = i
-    #         cache[arr[i]]["total"] = total
-    #         result.insert(0, total)
-    #     else:
-    #         cache[arr[i]] = {}
-    #         cache[arr[i]]["occurences"] = 1
-    #         cache[arr[i]]["index"] = i
-    #         total = how_many(arr[i:], arr[i])
-    #         cache[arr[i]]["total"] = total
-    #         result.insert(0, total)
-    # return result
-
-
-    #     total = 0
-    #     for key in cache:
-    #         if int(key) < arr[i]:
-    #             total += cache[key]
-    #     result.insert(0, total)
-    # return result
-
-
-
-    # for i in range(len(sorted_list)):
-    #     if sorted_list[i] not in cache:
-    #         cache[sorted_list[i]] = i
-    # for number in arr:
-    #     result.append(cache[number])
-    #     # sorted_list.pop(cache[number])
-    #     for key in cache:
-    #         if int(key) > number:
-    #             cache[key] -= 1
-    # return result
 
 
 
@@ -206,7 +125,6 @@ print(smaller([5, 4, 7, 9, 2, 4, 1, 4, 5, 6]))
 # [5, 4, 7, 9, 2, 4, 1, 4, 5, 6]
 
 
-
 # WORKING VERSION
 
 def how_many(array, number):
@@ -216,25 +134,7 @@ def how_many(array, number):
             count += 1
     return count
 
-# def smaller(arr):
-#     result = []
-#     cache = {}
-#     for i in range(len(arr) - 1, -1, -1):
-#         if arr[i] in cache:
-#             index = cache[arr[i]]["index"]
-#             old_total = cache[arr[i]]["total"]
-#             amount_to_add = how_many(arr[i:index], arr[i])
-#             total = old_total + amount_to_add
-#             cache[arr[i]]["index"] = i
-#             cache[arr[i]]["total"] = total
-#             result.insert(0, total)
-#         else:
-#             cache[arr[i]] = {}
-#             cache[arr[i]]["index"] = i
-#             total = how_many(arr[i:], arr[i])
-#             cache[arr[i]]["total"] = total
-#             result.insert(0, total)
-#     return result
+
 
 
 
