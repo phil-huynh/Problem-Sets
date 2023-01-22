@@ -25,9 +25,10 @@ function countConsonants(str) {
   const checker = {}
   let total = 0
   str.split('').forEach((letter) => {
-    if (consonants[letter.toLowerCase()]) {
-      if (!checker[letter.toLowerCase()]) {
-        checker[letter.toLowerCase()] = true
+    letter = letter.toLowerCase()
+    if (consonants[letter]) {
+      if (!checker[letter]) {
+        checker[letter] = true
         total++
       }
     }
