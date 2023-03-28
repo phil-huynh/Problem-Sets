@@ -36,4 +36,4 @@ function to_nato(words) {
     if (i !== words.length - 1 && letter !== ' ') { result += ' ' }
   })
   return result
-}
+}asa
