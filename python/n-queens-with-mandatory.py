@@ -1,89 +1,88 @@
 from pprint import pprint
 
+
 def make_board(n):
-  board = []
-  for i in range(n):
-    row = []
-    [row.append(".") for j in range(n)]
-    board.append(row)
-  return board
+    return [["." for j in range(n)] for i in range(n)]
 
-def place_piece(board, row, col):
-    if board[row][col] == ".":
-        board[row][col] = "Q"
-    return board
+def create_cache(n):
+    cache = {
+        "row": {num: True for num in range(n)},
+        "col": {num: True for num in range(n)},
+        "fwd_diag": {num: True for num in range(-n, n+1)},
+        "bck_diag": {num: True for num in range(0, ((n-1)*2) + 1)}
+    }
+    return cache
 
-def remove_piece(board, row, col):
-    if board[row][col] == "Q":
-        board[row][col] ="."
-    return board
+def place_piece(board, cache, row, col):
+    cache["row"][row] = False
+    cache["col"][col] = False
+    cache["fwd_diag"][col - row] = False
+    cache["bck_diag"][row + col] = False
+    board[row][col] = "Q"
+    return board, cache
 
-def row_safe(board, row):
-    for square in board[row]:
-        if square == "Q":
-            return False
+def remove_piece(board, cache, row, col):
+    cache["row"][row] = True
+    cache["col"][col] = True
+    cache["fwd_diag"][col - row] = True
+    cache["bck_diag"][row + col] = True
+    board[row][col] = "."
+    return board, cache
+
+def row_is_safe(cache, row):
+    return True if cache["row"].get(row) else False
+
+def is_safe(cache, row, col):
+    if not cache["row"].get(row) or \
+        not cache["col"].get(col) or \
+        not cache["fwd_diag"].get(col - row) or \
+        not cache["bck_diag"].get(row + col):
+        return False
     return True
 
-def col_safe(board, col):
-    for i, row in enumerate(board):
-        if board[i][col] == "Q":
-            return False
-    return True
-
-def back_diag_safe(board, row, col):
-    while row >= 0 and col >= 0:
-        if board[row][col] == "Q":
-            return False
-        row -=1
-        col -=1
-    return True
-
-def front_diag_safe(board, n, row, col):
-    while row >= 0 and col < n:
-        if board[row][col] == "Q":
-            return False
-        row -= 1
-        col += 1
-    return True
-
-def is_safe_from_rooks(board, row, col):
-    return row_safe(board, row) and col_safe(board, col)
-
-def diagonals_safe(board, n, row, col):
-    return back_diag_safe(board, row, col) and front_diag_safe(board, n, row, col)
-
-def is_safe_from_queens(board, n, row, col):
-    return is_safe_from_rooks(board, row, col) and diagonals_safe(board, n, row, col)
 
 def solve_n_queens(n, fixed_queen):
     print(f"\n Here are the solutions for n-queens if n={n}\n")
-    board = make_board(n)
-    results = []
-    def n_queens(board, n, row):
+    board, safe, results = make_board(n), create_cache(n), []
+    place_piece(board, safe, fixed_queen[0], fixed_queen[1])
+    def n_queens(board, safe, n, row):
         if row == n:
-            if board[fixed_queen[0]][fixed_queen[1]] == "Q":
-                string = ""
-                for r in board:
-                    string += f'{"".join(r)}\n'[:]
-                results.append(string)
-                return results
+            string = ""
+            for r in board:
+                string += f'{"".join(r)}\n'[:]
+            results.append(string)
+            return string
         else:
-            for col in range(len(board[row])):
-                if row <= fixed_queen[0] or \
-                (row > fixed_queen[0] and board[fixed_queen[0]][fixed_queen[1]] == "Q"):
-                    if is_safe_from_queens(board, n, row, col):
-                        board = place_piece(board, row, col)
-                        n_queens(board, n, row + 1)
-                        board = remove_piece(board, row, col)
-
-    n_queens(board, n, 0)
+            if row_is_safe(safe, row):
+                for col in range(len(board[row])):
+                    if is_safe(safe, row, col):
+                        board, safe = place_piece(board, safe, row, col)
+                        n_queens(board, safe.copy(), n, row + 1)
+                        board, safe = remove_piece(board, safe, row, col)
+            else:
+                n_queens(board, safe.copy(), n, row + 1)
+    n_queens(board, safe, n, 0)
     if results:
         return results[0]
     else:
         return None
 
 
-test = solve_n_queens(4, (0,2))
+test = solve_n_queens(4, (2,2))
+print(test)
 
-pprint(test)
-print("\n")
+
+# board = make_board(5)
+# cache = create_cache(5)
+
+# print("\n")
+# pprint(board)
+# print("\n")
+# pprint(cache)
+# place_piece(board, cache, 1, 1)
+# print("\n")
+# pprint(board)
+# print("\n")
+# pprint(cache)
+# print("\n")
+# print(is_safe(cache, 1, 3))
