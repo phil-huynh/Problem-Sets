@@ -12,8 +12,6 @@
 // This is all you need to solve this kata. If you're interested in more information
 
 
-const log = (...items) => console.log(...items)
-
 const checkShips = (battleship, cruisers, destroyers, submarines) => {
   if (
     battleship === 1 &&
@@ -26,97 +24,64 @@ const checkShips = (battleship, cruisers, destroyers, submarines) => {
 
 const nearOtherShips = (board, i, j) => {
   if (
-    board[i][j-1] === 2  ||
-    board[i-1][j-1] === 2 ||
-    board[i-1][j] === 2 ||
-    board[i-1][j+1] === 2  ||
-    board[i][j+1] === 2 ||
-    board[i+1][j+1] === 2 ||
-    board[i+1][j] === 2 ||
-    board[i+1][j-1] === 2
+    (j-1 >= 0 && board[i][j-1] === 2) ||
+    (j-1 >= 0 && i-1>=0 && board[i-1][j-1] === 2) ||
+    (i-1 >= 0 && board[i-1][j] === 2 ) ||
+    (i-1 >= 0 && j+1 < board.length && board[i-1][j+1] === 2) ||
+    (j+1 < board.length && board[i][j+1] === 2) ||
+    (i+1 < board.length && j+1 < board.length && board[i+1][j+1] === 2 ) ||
+    (i+1 < board.length && board[i+1][j] === 2 ) ||
+    (i+1 < board.length && j-1>=0 && board[i+1][j-1] === 2)
   ) { return true }
   return false
 }
 
 const boatCheckRow = (board, i, j) => {
-  log("in row check")
-  let count = 0
-  let square = board[i][j]
-  log("square: ", square)
+  let [count, square] = [0, board[i][j]]
   while (square === 1 && j < 10) {
     board[i][j] = 2
     count++
     j++
-    log(count)
-    log("i, j", [i, j])
     square = board[i][j]
-    log("square: ", square)
   }
   return count
 }
 
 const boatCheckCol = (board, i, j) => {
-  log("in col check")
-  let count = 0
-  let square = board[i][j]
-  log("square: ", square)
+  let [count, square] = [0, board[i][j]]
   while (square === 1 && i < 10) {
     board[i][j] = 2
     count++
     i++
-    log(count)
-    log("i, j", [i, j])
     square = board[i][j]
-    log("square: ", square)
   }
   return count
 }
 
-const showField = (field) => {
-  log('\n')
-  log(field.map(row => row.join(' ')).join('\n'))
-  log('\n')
-}
-
-
 function validateBattlefield(field) {
-  showField(field)
   const ships = { bat: 0, cru: 0, des: 0, sub: 0 }
   const shipLengths = { 4: "bat", 3: "cru", 2: "des"}
   field.forEach((row, i) => {
     row.forEach((square, j) => {
       if (square === 1) {
-//         if (nearOtherShips(field, i, j)) { return false }
-        log('\n')
-        log(`A SQUARE WITH A 1 !!!  IT'S AT (${i},${j})`)
+        if (nearOtherShips(field, i, j)) { return false }
         let across = boatCheckRow(field, i, j)
         field[i][j] = 1
         let down = boatCheckCol(field, i, j)
-        log("     ACROSS IS : ", across)
-        log("       DOWN IS : ", down)
         if (across === 1 && down === 1) {
           ships.sub++
-
-          log("\n     ADDED A SUBMARINE")
-          log('     ',ships)
         }
         if (across > down) {
           if (down > 1) { return false }
           ships[shipLengths[across]]++
-          log("ADDED A HORIZONTAL SHIP : ", shipLengths[across])
-          log(ships)
         }
         if (down > across) {
           if (across > 1) { return false }
           ships[shipLengths[down]]++
-          log("ADDED A VERTICAL SHIP : ", shipLengths[down])
-          log(ships)
         }
       }
     })
   })
-  log(ships)
-  showField(field)
   return checkShips(ships.bat, ships.cru, ships.des, ships.sub)
 }
 
@@ -138,4 +103,3 @@ function validateBattlefield(field) {
             ]
 
 let testResult = validateBattlefield(test)
-log(testResult)
