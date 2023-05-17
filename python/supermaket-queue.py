@@ -37,7 +37,6 @@ def queueTime(customers, n):
         lines.sort()
     return max(lines)
 
-
   # for i, customers in enumerate(customers):
 
 print(queueTime([5,3,4], 1))
