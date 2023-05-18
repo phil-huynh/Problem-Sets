@@ -1,4 +1,6 @@
 /*
+https://www.codewars.com/kata/5286a298f8fc1b7667000c1c/train/javascript
+
 Goal
 The goal is to count the number of words, chars and lines in a block of text. [Pretty much like the wc command].
 
