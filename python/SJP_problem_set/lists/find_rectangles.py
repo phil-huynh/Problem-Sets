@@ -28,3 +28,12 @@ def count_rectangles(drawing):
             if drawing[j][k] == "O":
                 continue
     return count
+
+
+# count_rectangles([
+#     "...*****...",
+#     "**.........",
+#     "**....*****",
+#     "......*****",
+#     "......*****",
+# ])

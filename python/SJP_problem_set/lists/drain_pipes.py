@@ -18,3 +18,10 @@ def pipe_outputs(num_pipes, steps):
             pipes.pop(index)
             pipes.insert(index, left + right)
     return pipes
+
+# 1
+# [[1, 4], [2, 2], [1, 2]]
+# 4
+# [[2, 3], [4, 7], [1], [2], [3]]
+# 3
+# [[2], [1]]
