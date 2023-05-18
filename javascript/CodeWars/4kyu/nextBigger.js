@@ -1,5 +1,4 @@
 /*
-
 https://www.codewars.com/kata/55983863da40caa2c900004e/javascript
 
 Create a function that takes a positive integer and returns the next bigger number that can be formed by rearranging its digits. For example:

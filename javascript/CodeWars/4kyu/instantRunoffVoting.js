@@ -1,4 +1,7 @@
-/* Your task is to implement a function that calculates an election winner from a list of voter selections using an Instant Runoff Voting algorithm. If you haven't heard of IRV, here's a basic overview (slightly altered for this kata):
+/*
+https://www.codewars.com/kata/52996b5c99fdcb5f20000004/train/javascript
+
+Your task is to implement a function that calculates an election winner from a list of voter selections using an Instant Runoff Voting algorithm. If you haven't heard of IRV, here's a basic overview (slightly altered for this kata):
 
     Each voter selects several candidates in order of preference.
 
