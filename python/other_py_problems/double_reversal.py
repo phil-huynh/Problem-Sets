@@ -17,8 +17,6 @@ def is_double_reversible(num):
     return False
 
 
-
-
 print(is_double_reversible(1234))
 print(is_double_reversible(2340))
 

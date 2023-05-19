@@ -1,6 +1,5 @@
 def find_duplicates(some_list):
-  duplicates = {}
-  checker = {}
+  duplicates, checker = {}, {}
   for string in some_list:
     if checker.get(string):
       if not duplicates.get(string):
