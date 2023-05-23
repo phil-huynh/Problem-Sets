@@ -1,4 +1,5 @@
 /*
+https://www.codewars.com/kata/594fae1a0462da7beb000046/train/javascript
 
 Jump is a simple one-player game:
 
