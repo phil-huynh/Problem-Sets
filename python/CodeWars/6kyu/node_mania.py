@@ -1,4 +1,4 @@
-# https://www.codewars.com/kata/5567e7d0adb11174c50000a7/train/javascript
+# https://www.codewars.com/kata/5567e7d0adb11174c50000a7/train/python
 
 # This kata is about singly linked list. A linked list is an ordered set of data elements, each containing a link to its successor (and sometimes its predecessor, known as a double linked list). You are you to implement an algorithm to find the kth to last element.
 
