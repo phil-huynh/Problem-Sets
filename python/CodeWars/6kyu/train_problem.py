@@ -1,4 +1,4 @@
-https://www.codewars.com/kata/645e541f3e6c2c0038a01216/train/python
+# https://www.codewars.com/kata/645e541f3e6c2c0038a01216/train/python
 
 # Given a train track with some trains on it, then the same train track after some time has passed, return True if the arrangement is valid, otherwise return False.
 
