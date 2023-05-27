@@ -1,4 +1,6 @@
 /*
+https://www.codewars.com/kata/5842df8ccbd22792a4000245/train/javascript
+
 You will be given a number and you will need to return it as a string in Expanded Form. For example:
 
 expandedForm(12); // Should return '10 + 2'
