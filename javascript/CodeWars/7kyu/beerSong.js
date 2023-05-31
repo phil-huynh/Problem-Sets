@@ -44,13 +44,15 @@ Example
 
   */
 
+const what = 'of beer'
+const where = "on the wall"
 const bottle = (num) => num === 1 ? 'bottle' : 'bottles';
 const howMany = (num) => num === 0 ? num = 'no more' : num;
-const lineOne = (num) => `${num} ${bottle(num)} of beer on the wall, ${num} ${bottle(num)} of beer.`
-const lineTwo = (num) => `Take one down and pass it around, ${howMany(num)} ${bottle(num)} of beer on the wall.`
+const lineOne = (num) => `${num} ${bottle(num)} ${what} ${where}, ${num} ${bottle(num)} ${what}.`
+const lineTwo = (num) => `Take one down and pass it around, ${howMany(num)} ${bottle(num)} ${what} ${where}.`
 const finalVerse = (arr) => {
-  arr.push('No more bottles of beer on the wall, no more bottles of beer.')
-  arr.push('Go to the store and buy some more, 99 bottles of beer on the wall.')
+  arr.push(`No more bottles ${what} ${where}, ${howMany(0)} ${bottle(0)} ${what}.`)
+  arr.push(`Go to the store and buy some more, ${howMany(0)} ${bottle(0)} ${what} ${where}.`)
 }
 
 const sing = () => {
