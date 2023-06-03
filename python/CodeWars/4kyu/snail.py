@@ -19,10 +19,8 @@
 
 def snail(snail_map):
     snail_array = []
-    top = 0
-    bottom = len(snail_map)
-    left = 0
-    right = len(snail_map[0])
+    top, bottom = 0, len(snail_map)
+    left, right = 0, len(snail_map[0])
 
     while top < bottom and left < right:
 

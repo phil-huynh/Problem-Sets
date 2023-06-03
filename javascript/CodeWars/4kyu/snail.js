@@ -21,12 +21,10 @@ NOTE: The idea is not sort the elements from the lowest value to the highest; th
 NOTE 2: The 0x0 (empty matrix) is represented as en empty array inside an array [[]].
 */
 
-snail = function(array) {
+const snail = (array) => {
   const snailArray = []
-  let top = 0
-  let bottom = array.length
-  let left = 0
-  let right = array[0].length
+  let top = 0, bottom = array.length
+  let left = 0, right = array[0].length
 
   while (top < bottom && left < right) {
 
