@@ -41,7 +41,7 @@ def can_jump(arr):
     if arr[0] >= len(arr):
         return True
     distance = arr[0]
-    for i, item in enumerate(arr):
+    for i in range(len(arr)):
         if distance == 0:
             return False
         if distance > len(arr[i:]):

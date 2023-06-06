@@ -32,8 +32,7 @@
 # P.S. The situation in this kata can be likened to the more-computer-science-related idea of a thread pool, with relation to running multiple processes at the same time: https://en.wikipedia.org/wiki/Thread_pool
 
 def queueTime(customers, n):
-    lines = []
-    [lines.append(0) for num in range(n)]
+    lines = [0 for i in range(n)]
     for customer in customers:
         lines[0] += customer
         lines.sort()
