@@ -8,7 +8,9 @@
 
 # Based on: http://oj.leetcode.com/problems/two-sum/
 
-# two_sum([1, 2, 3], 4) # returns [0, 2] or [2, 0]
+# two_sum([1, 2, 3, 5], 4) # returns [0, 2] or [2, 0]
+
+
 
 def two_sum(numbers, target):
     cache = {}
@@ -17,3 +19,5 @@ def two_sum(numbers, target):
             cache[target - num] = i
         else:
             return (cache[num], i)
+
+
