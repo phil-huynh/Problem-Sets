@@ -462,7 +462,6 @@ print("\n")
 print("Here is our count change printout")
 print("-------------------------------------")
 pprint(get_change(1.49))
-print("\n")
-print("\n")
-print("\n")
+print("\n\n\n")
+
 
