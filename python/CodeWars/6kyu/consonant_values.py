@@ -15,13 +15,12 @@
 
 def solve(s):
     score, high = 0, 0
-    scores = {letter: i + 1 for i, letter in enumerate('abcdefghijklmnopqrstuvwxyz')}
     vowels = {letter: True for letter in "aeiou"}
 
     def set_high(score, high):
         return score if score > high else high
 
     for letter in s:
-        score = 0 if vowels.get(letter) else score + scores[letter]
+        score = 0 if vowels.get(letter) else score + ord(letter) - 96
         high = set_high(score, high)
     return high

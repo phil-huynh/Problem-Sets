@@ -12,22 +12,16 @@ solve("zodiacs") = 26
 
 For the word "strength", solve("strength") = 57
 -- The consonant substrings are: "str" and "ngth" with values "str" = 19 + 20 + 18 = 57 and "ngth" = 14 + 7 + 20 + 8 = 49. The highest is 57.
-For C: do not mutate input.
-
-More examples in test cases. Good luck!
-
-If you like this Kata, please try:
 */
 
 
 function solve(s) {
   let [highScore, score] = [0, 0]
   const vowels = 'aeiou'.split('').reduce((a, b) => a = {...a, [b]: true}, {})
-  const setHigh = score => highScore = score > highScore ? score : highScore
 
   s.split('').forEach(letter => {
     !vowels[letter] ? score += letter.charCodeAt(0) - 96 : score = 0
-    setHigh(score)
+    highScore = score > highScore ? score : highScore
   })
   return highScore
 };
