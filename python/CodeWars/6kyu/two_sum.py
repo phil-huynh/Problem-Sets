@@ -15,9 +15,8 @@
 def two_sum(numbers, target):
     cache = {}
     for i, num in enumerate(numbers):
-        if not cache.get(num) and cache.get(num) != 0:
-            cache[target - num] = i
-        else:
+        if num in cache:
             return (cache[num], i)
+        cache[target - num] = i
 
 

@@ -15,11 +15,9 @@ two_sum([1, 2, 3], 4) # returns [0, 2] or [2, 0]
 function twoSum(numbers, target) {
   const cache = {}
   for (let i = 0; i < numbers.length; i++) {
-    if (cache[target - numbers[i]] === undefined) {
-      cache[numbers[i]] = i
-    }
-    else {
+    if ((target - numbers[i]) in cache) {
       return [cache[target - numbers[i]], i]
     }
+    cache[numbers[i]] = i
   }
 }

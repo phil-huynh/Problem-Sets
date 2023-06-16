@@ -9,8 +9,9 @@
 
 def pig_it(text):
     punctuation = [",", ".", "?", "!"]
-    text = text.split()
+    text = text.split(' ')
     for i, word in enumerate(text):
         if word not in punctuation:
             text[i] = f"{word[1:]}{word[0]}ay"
     return " ".join(text)
+
