@@ -21,21 +21,13 @@
 from math import factorial
 
 def get_factorial(num, ref):
-    if num in ref:
-        result = ref[num]
-    else:
-        result = factorial(num)
-        ref[num] = result
-    return result
+    ref[num] = ref[num] if num in ref else factorial(num)
+    return ref[num]
 
 def listPosition(word):
-    checker = {}
-    factorials = {}
+    checker, factorials = {}, {}
     for letter in word:
-        if letter not in checker:
-            checker[letter] = 1
-        else:
-            checker[letter] += 1
+        checker[letter] = 0 if letter not in checker else checker[letter] + 1
     order = [key for key in checker]
     order.sort()
 
