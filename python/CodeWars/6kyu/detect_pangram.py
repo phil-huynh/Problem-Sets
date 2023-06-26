@@ -5,9 +5,8 @@
 # Given a string, detect whether or not it is a pangram. Return True if it is, False if not. Ignore numbers and punctuation.
 
 def is_pangram(s):
-    cache, alphabet = {}, ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
-    for char in s:
-        cache[char.lower()] = True
+    alphabet = [letter for letter in "abcdefghijklmnopqrstuvwxyz"]
+    cache = {char.lower(): True for char in s}
     for letter in alphabet:
         if not cache.get(letter):
             return False
