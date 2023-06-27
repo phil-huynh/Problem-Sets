@@ -149,20 +149,40 @@ formats = [
 
 test2 =  "cons1: prod1@app, prod2@app, | cons2: prod3@app, prod4@app"
 
-
-
 queue_formats = [ "([\w]+:[\s\w@,]+)" ]
 
+phone_formats = [
+    "(\([\d]{3}\)-[\d]{3}-[\d]{4})",
+    "(\([\d]{3}\)[\d]{3}-[\d]{4})",
+    "(1-[\d]{3}-[\d]{3}-[\d]{4})",
 
-def regex(array, string):
-    for reg in array:
-        found = re.findall(reg, string)
-        if found:
-            return found
+    "(\([\d]{3}\)-[\d]{3}-[\d]{4})",
+    "(\([\d]{3}\)[\d]{3}-[\d]{4})",
+    "([\d]{3}-[\d]{3}-[\d]{4})",
+    "([\d]{3}-[\d]{4})",
+]
 
+number = [
+    "207-622-2231",
+    "622-2231",
+    "(774)644-6410"
+]
+
+
+
+def regex(formats, array):
+    result = []
+    for item in array:
+        for shape in formats:
+            found = re.findall(shape, item)
+            if found:
+                result += found
+                break
+    return result
+print(regex(phone_formats, number))
 
 # print(regex(formats, test))
-print(regex(queue_formats, test2))
+# print(regex(queue_formats, test2))
 
 
 
